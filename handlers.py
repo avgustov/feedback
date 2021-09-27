@@ -77,10 +77,3 @@ def setup_dispatcher(dp):
     dp.add_handler(MessageHandler(Filters.chat_type.private, forward_to_chat))
     dp.add_handler(MessageHandler(Filters.chat(TELEGRAM_SUPPORT_CHAT_ID) & Filters.reply, forward_to_user))
     return dp
-
-@bot.message_handler(commands = ['url'])
-def url(message):
-    markup = types.InlineKeyboardMarkup()
-    btn_my_site= types.InlineKeyboardButton(text='Оплата | 50₽', url='https://bestlook.pro/product/online-help')
-    markup.add(btn_my_site)
-    bot.send_message(message.chat.id, "Нажми на кнопку доступа.", reply_markup = markup)
